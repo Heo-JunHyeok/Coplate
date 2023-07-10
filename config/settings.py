@@ -143,8 +143,9 @@ AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
-ACCOUNT_SIGNUP_REDIRECT_URL = "index"
-LOGIN_REDIRECT_URL = "index"
+ACCOUNT_SIGNUP_REDIRECT_URL = "index"  # 회원가입 완료시 이동할 url
+LOGIN_REDIRECT_URL = "index"  # 로그인 성공시 이동할 url
+ACCOUNT_LOGOUT_ON_GET = True  # 로그아웃 페이지를 거치지 않고 바로 로그아웃
 
 # Email Settings
 
