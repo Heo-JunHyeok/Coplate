@@ -123,7 +123,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 # Allauth Settings
-
 AUTH_USER_MODEL = "coplate.User"
 
 
@@ -141,12 +140,26 @@ ACCOUNT_AUTHENTICATION_METHOD = "email"  # ID로 사용할 field, username_email
 ACCOUNT_EMAIL_REQUIRED = True  # email 필수
 ACCOUNT_USERNAME_REQUIRED = False  # username 필수 해제
 ACCOUNT_SIGNUP_FORM_CLASS = "coplate.forms.SignupForm"
+ACCOUNT_PASSWORD_INPUT_RENDER_VALUE = True  # Form에 대한 입력이 오류가 나도 정보가 브라우저에 남음
+
 ACCOUNT_SESSION_REMEMBER = True  # 브라우저 종료 시 세션을 기억할 것인가, 로그인 상태 유지
 # 로그아웃이 아닌 쿠키가 만료된 경우 세션은 서버에 남는다.
 # 따라서 주기적으로 python manage.py clearsessions 로 정리, 수동적으로 하거나 자동화해서
-# SESSION_COOKIE_AGE = 3600  # 세션 유지 시간, 초단위
-ACCOUNT_PASSWORD_INPUT_RENDER_VALUE = True  # Form에 대한 입력이 오류가 나도 정보가 브라우저에 남음
+# SESSION_COOKIE_AGE = 3600  # 세션 유지 시간, 초단위 / default: 2주
+
+# ACCOUNT_EMAIL_VARIFICATION = "optional"
+# mandatory : email 인증을 하기 전에 로그인 불가
+# optional : email을 발송, 인증하지 않아도 로그인 가능 (default)
+# none : email 인증을 하지 않음, 발송도 안함
+
+# email 인증 링크 진입 시 자동 인증, false일 경우 해당 링크에서 confirm클릭 해야 함
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+
+# 해당 html에서 템플릿 태그로 두 경우를 분류해서 같은 url 적용
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = (
+    "account_email_confirmation_done"
+)
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = "account_email_confirmation_done"
 
 # Email Settings
-
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
