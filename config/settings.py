@@ -146,6 +146,13 @@ AUTHENTICATION_BACKENDS = [
 ACCOUNT_SIGNUP_REDIRECT_URL = "index"  # 회원가입 완료시 이동할 url
 LOGIN_REDIRECT_URL = "index"  # 로그인 성공시 이동할 url
 ACCOUNT_LOGOUT_ON_GET = True  # 로그아웃 페이지를 거치지 않고 바로 로그아웃
+ACCOUNT_AUTHENTICATION_METHOD = "email"  # ID로 사용할 field, username_email: 둘 다 허용할 경우
+ACCOUNT_EMAIL_REQUIRED = True  # email 필수
+ACCOUNT_USERNAME_REQUIRED = False  # username 필수 해제
+ACCOUNT_SESSION_REMEMBER = True  # 브라우저 종료 시 세션을 기억할 것인가, 로그인 상태 유지
+# 로그아웃이 아닌 쿠키가 만료된 경우 세션은 서버에 남는다.
+# 따라서 주기적으로 python manage.py clearsessions 로 정리, 수동적으로 하거나 자동화해서
+# SESSION_COOKIE_AGE = 3600  # 세션 유지 시간, 초단위
 
 # Email Settings
 
