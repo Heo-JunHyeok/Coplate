@@ -161,5 +161,8 @@ ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = (
 )
 ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = "account_email_confirmation_done"
 
+# PASSWORD_RESET_TIMEOUT=3600 # 단위:초 / default: 3일
+
+
 # Email Settings
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
