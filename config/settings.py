@@ -94,16 +94,7 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        "NAME": "coplate.validators.CustomPasswordValidator",
     },
 ]
 
@@ -111,7 +102,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "ko"
 
 TIME_ZONE = "UTC"
 
@@ -154,6 +145,7 @@ ACCOUNT_SESSION_REMEMBER = True  # 브라우저 종료 시 세션을 기억할 �
 # 로그아웃이 아닌 쿠키가 만료된 경우 세션은 서버에 남는다.
 # 따라서 주기적으로 python manage.py clearsessions 로 정리, 수동적으로 하거나 자동화해서
 # SESSION_COOKIE_AGE = 3600  # 세션 유지 시간, 초단위
+ACCOUNT_PASSWORD_INPUT_RENDER_VALUE = True  # Form에 대한 입력이 오류가 나도 정보가 브라우저에 남음
 
 # Email Settings
 
