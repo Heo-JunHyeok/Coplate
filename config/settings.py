@@ -164,6 +164,8 @@ ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = "account_email_confirmation_
 
 # PASSWORD_RESET_TIMEOUT=3600 # 단위:초 / default: 3일
 
+# account eamil의 제목 앞에 붙는 문자열 / overwriting 해도 웹사이트의 도메인이 붙기 때문
+ACCOUNT_EMIAL_SUBJECT_PREFIX = ""
 
 # Email Settings
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
