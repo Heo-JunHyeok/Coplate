@@ -3,9 +3,9 @@
 {% load static %}
 
 {% block header %}
-<header class="site-header only-logo max-content-width">
-  <a href="#">
-    <img class="logo" src="{% static 'coplate/assets/coplate-logo.svg' %}" alt="Coplate Logo">
-  </a>
-</header>
+  <header class="site-header only-logo max-content-width">
+    <a href="{% url 'index' %}">
+      <img class="logo" src="{% static 'coplate/assets/coplate-logo.svg' %}" alt="Coplate Logo">
+    </a>
+  </header>
 {% endblock header %}
