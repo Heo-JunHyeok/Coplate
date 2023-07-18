@@ -14,7 +14,7 @@ def contains_uppercase_letter(value):
     for char in value:
         if char.isupper():
             return True
-    return True
+    return False
 
 
 # 실습으로 완성해 주세요
@@ -22,7 +22,7 @@ def contains_lowercase_letter(value):
     for char in value:
         if char.islower():
             return True
-    return True
+    return False
 
 
 # 실습으로 완성해 주세요
@@ -30,7 +30,7 @@ def contains_number(value):
     for char in value:
         if char.isdigit():
             return True
-    return True
+    return False
 
 
 class CustomPasswordValidator:
