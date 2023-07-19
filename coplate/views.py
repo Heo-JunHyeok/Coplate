@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from allauth.account.views import PasswordChangeView
 from .models import Review
 
@@ -11,6 +11,12 @@ class IndexView(ListView):
     context_object_name = "reviews"
     paginate_by = 4
     ordering = ["-dt_created"]
+
+
+class ReviewDetailView(DetailView):
+    model = Review
+    template_name = "coplate/review_detail.html"
+    pk_url_kwarg = "review_id"
 
 
 class CustomPasswordChangeView(PasswordChangeView):
