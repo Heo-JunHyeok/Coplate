@@ -140,7 +140,6 @@ AUTHENTICATION_BACKENDS = [
 
 ACCOUNT_SIGNUP_REDIRECT_URL = "index"  # 회원가입 완료시 이동할 url
 LOGIN_REDIRECT_URL = "index"  # 로그인 성공시 이동할 url
-LOGIN_URL = "account_login"  # 접근 제어, LoginRequiredMIxin 사용 시 미로그인 상태일 경우 이동할 URL
 ACCOUNT_LOGOUT_ON_GET = True  # 로그아웃 페이지를 거치지 않고 바로 로그아웃
 ACCOUNT_AUTHENTICATION_METHOD = "email"  # ID로 사용할 field, username_email: 둘 다 허용할 경우
 ACCOUNT_EMAIL_REQUIRED = True  # email 필수
@@ -171,6 +170,11 @@ ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = "account_email_confirmation_
 
 # account eamil의 제목 앞에 붙는 문자열 / overwriting 해도 웹사이트의 도메인이 붙기 때문
 ACCOUNT_EMIAL_SUBJECT_PREFIX = ""
+
+
+# Mixin (접근 제어)
+LOGIN_URL = "account_login"  # 접근 제어, LoginRequiredMIxin 사용 시 미로그인 상태일 경우 이동할 URL
+
 
 # Email Settings
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
