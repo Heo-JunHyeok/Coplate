@@ -10,12 +10,12 @@ urlpatterns = [
     ),
     path("reviews/new/", views.ReviewCreateView.as_view(), name="review-create"),
     path(
-        "review/<int:review_id>/edit/",
+        "reviews/<int:review_id>/edit/",
         views.ReviewUpdateView.as_view(),
         name="review-update",
     ),
     path(
-        "review/<int:review_id>/delete/",
+        "reviews/<int:review_id>/delete/",
         views.ReviewDeleteView.as_view(),
         name="review-delete",
     ),

@@ -34,6 +34,7 @@ class ReviewCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     form_class = ReviewForm
     template_name = "coplate/review_form.html"
 
+    # 인증되지 않은 유저 처리 방법
     redirect_unauthenticated_users = True
     raise_exception = confirmation_required_redirect
 
@@ -44,27 +45,40 @@ class ReviewCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     def get_success_url(self):
         return reverse("review-detail", kwargs={"review_id": self.object.id})
 
+    # UserPassesTestMixin
     def test_func(self, user):
         return EmailAddress.objects.filter(user=user, verified=True).exists()
 
 
-class ReviewUpdateView(UpdateView):
+class ReviewUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Review
     form_class = ReviewForm
     template_name = "coplate/review_form.html"
     pk_url_kwarg = "review_id"
 
+    raise_exception = True
+
     def get_success_url(self):
         return reverse("review-detail", kwargs={"review_id": self.object.id})
 
+    def test_func(self, user):
+        review = self.get_object()
+        return review.author == user
 
-class ReviewDeleteView(DeleteView):
+
+class ReviewDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Review
     template_name = "coplate/review_confirm_delete.html"
     pk_url_kwarg = "review_id"
 
+    raise_exception = True
+
     def get_success_url(self):
         return reverse("index")
+
+    def test_func(self, user):
+        review = self.get_object()
+        return review.author == user
 
 
 class CustomPasswordChangeView(PasswordChangeView):
