@@ -138,13 +138,15 @@ AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
-ACCOUNT_SIGNUP_REDIRECT_URL = "index"  # 회원가입 완료시 이동할 url
+ACCOUNT_SIGNUP_REDIRECT_URL = "profile-set"  # 회원가입 완료시 이동할 url
 LOGIN_REDIRECT_URL = "index"  # 로그인 성공시 이동할 url
 ACCOUNT_LOGOUT_ON_GET = True  # 로그아웃 페이지를 거치지 않고 바로 로그아웃
 ACCOUNT_AUTHENTICATION_METHOD = "email"  # ID로 사용할 field, username_email: 둘 다 허용할 경우
 ACCOUNT_EMAIL_REQUIRED = True  # email 필수
 ACCOUNT_USERNAME_REQUIRED = False  # username 필수 해제
-ACCOUNT_SIGNUP_FORM_CLASS = "coplate.forms.SignupForm"
+
+# 해당 Form에 있던 nickname 필드를 profile에서 사용할 것이기 때문에 아래 설정을 주석처리
+# ACCOUNT_SIGNUP_FORM_CLASS = "coplate.forms.SignupForm"
 ACCOUNT_PASSWORD_INPUT_RENDER_VALUE = True  # Form에 대한 입력이 오류가 나도 정보가 브라우저에 남음
 
 ACCOUNT_SESSION_REMEMBER = True  # 브라우저 종료 시 세션을 기억할 것인가, 로그인 상태 유지

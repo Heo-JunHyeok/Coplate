@@ -2,14 +2,14 @@ from django import forms
 from .models import User, Review
 
 
-class SignupForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ["nickname"]  # 추가할 필드만 명시
+# class SignupForm(forms.ModelForm):
+#     class Meta:
+#         model = User
+#         fields = ["nickname"]  # allauth, 추가할 필드만 명시
 
-    def signup(self, request, user):
-        user.nickname = self.cleaned_data["nickname"]  # Form에 기입된 데이터 = cleaned_data
-        user.save()
+#     def signup(self, request, user):
+#         user.nickname = self.cleaned_data["nickname"]  # Form에 기입된 데이터 = cleaned_data
+#         user.save()
 
 
 class ReviewForm(forms.ModelForm):
@@ -27,4 +27,17 @@ class ReviewForm(forms.ModelForm):
         ]
         widgets = {
             "rating": forms.RadioSelect,
+        }
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = [
+            "nickname",
+            "profile_pic",
+            "intro",
+        ]
+        widgets = {
+            "intro": forms.Textarea,
         }
